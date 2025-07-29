@@ -1,4 +1,4 @@
-# **Code for "Assymetric Models for Realized Covariances"**
+# **Code for "Asymmetric Models for Realized Covariances"**
 
 Luc Bauwens, Emilija Dzuverovic, Christian Hafner
 
