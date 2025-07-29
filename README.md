@@ -4,19 +4,19 @@ Luc Bauwens, Emilija Dzuverovic, Christian Hafner
 
 ## Overview
 
-The code in this repository is used in the empirical analyses of the paper "Asymmetric Models for Realized Covariances". The latter were run on Matlab_R2024b with an additional adoption of the MFE Toolbox of Kevin Sheppard.
+The code in this repository is used in the empirical analyses of the paper ''Asymmetric Models for Realized Covariances". The latter were run on Matlab_R2024b, including the adoption of the MFE Toolbox of Kevin Sheppard.
 
-The main contents are the following:
-Estimation_Tables.m: the script file to replicate the main estimation results
+The main contents of the source code are the following:
+Estimation_Tables.m: the script file leading to the main estimation results
 Forecasting.m: the script file to generate the forecasts
-Forecasting_Tables.m: the script file to replicate the main forecasting results
-Fun/: folder of the functions for generating the estimation/forecasting results
-Data/: folder of processed data files used as an input for generating the estimation results
+Forecasting_Tables.m: the script file leading to the main forecasting results
+Fun/: folders of the functions for generating the estimation and forecasting results
+Data/: folders of processed data files used as an input for generating the estimation and forecasting results
 Forecasts/: folder of processed data files used as an input for generating the forecasting results
 
 ## Instructions
 
-All file paths are relative to the root of the replication package. Remember to specify the correct path to the local version of the repository. The estimtion and forecasting analyses files can be run individually, in any order.
+The estimtion and forecasting analyses files can be run individually, in any order. Remember to specify the correct path to the local version of the repository.
 
 ## Data availability and provenance
 
