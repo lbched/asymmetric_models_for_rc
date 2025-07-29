@@ -1,1 +1,4 @@
-# code_asymmetric_models_for_rc
+Code for "Assymetric Models for Realized Covariances"
+
+Luc Bauwens, Emilija Dzuverovic, Christian Hafner
+
