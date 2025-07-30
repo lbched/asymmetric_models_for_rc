@@ -1,10 +1,10 @@
-# **Code for "Asymmetric Models for Realized Covariances"**
+# **Matlab Code for "Asymmetric Models for Realized Covariances"**
 Luc Bauwens, Emilija Dzuverovic, Christian Hafner
 
 ## Overview
 The code in this repository is used in the empirical analyses of the paper "Asymmetric Models for Realized Covariances". The latter were run on Matlab_R2024b, including the adoption of the MFE Toolbox of Kevin Sheppard.
 
-The main contents of the source code are the following:
+The main contents of the code distribution are the following:
 - Estimation_Tables.m: the script file leading to the main estimation results
 - Forecasting_Tables.m: the script file leading to the main forecasting results
 - Fun/: folders of the functions for generating the estimation and forecasting results
