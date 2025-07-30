@@ -8,8 +8,8 @@ The main contents of the code distribution are the following:
 - Estimation_Tables.m: the script file leading to the main estimation results
 - Forecasting_Tables.m: the script file leading to the main forecasting results
 - Fun/: folders of the functions for generating the estimation and forecasting results
-- Data/: folders of processed data files used as an input for generating the estimation and forecasting results
-- Forecasts/: folder of processed data files used as an input for generating the forecasting results
+- Data/: folders of data files used as an input for generating the estimation and forecasting results
+- Forecasts/: folder of data files used as an input for generating the forecasting results
 
 ## Instructions
 The estimation and forecasting analyses files can be run individually, in any order. Remember to specify the correct path to the local version of the repository.
