@@ -15,7 +15,7 @@ The main contents of the source code are the following:
 
 ## Instructions
 
-The estimtion and forecasting analyses files can be run individually, in any order. Remember to specify the correct path to the local version of the repository.
+The estimation and forecasting analyses files can be run individually, in any order. Remember to specify the correct path to the local version of the repository.
 
 ## Data availability
 
