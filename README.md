@@ -12,7 +12,7 @@ The main contents of the code distribution are the following:
 - Forecasts/: folder of data files used as an input for generating the forecasting results
 
 ## Instructions
-The estimation and forecasting analyses files can be run individually, in any order. Remember to specify the correct path to the local version of the repository.
+The estimation and forecasting analyses can be run individually, in any order. Remember to specify the correct path to the local version of the repository.
 
 ## Data availability
 For the empirical analyses, we have constructed the time series of daily RC matrices with the corresponding daily and intraday returns-based decompositions by using a high-frequency data set for the SPDR S&P500 and five stocks of the banking sector, i.e., Bank of America Corp. (BAC), Citigroup Inc. (C), Goldman Sachs Group Inc. (GS), JPMorgan Chase & Co. (JPM), and Wells Fargo & Co. (WFC). The data provided to us by the AlgoSeek company (30 Wall Street, 10005 NY, USA) are the prices of the assets observed every minute during the trading period (9:30-16:00) and compiled from the trades that occurred in the major US exchanges and marketplaces. Given we are not free to distribute the AlgoSeek data, we provide the corresponding time series of computed daily realized (semi-)covariance matrices based on the 5-minute log-return vectors of the trading period of the day. The sample period is January 3, 2012 - December 31, 2021, i.e., 2517 observations.
