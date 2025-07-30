@@ -2,14 +2,14 @@
 Luc Bauwens, Emilija Dzuverovic, Christian Hafner
 
 ## Overview
-The code in this repository is used in the empirical analyses of the paper "Asymmetric Models for Realized Covariances". The latter introduces a new class of asymmetric models for RC based on the BEKK-type conditional autoregressive Wishart model either by interacting the RC with the signs of the daily returns or by using the semi-covariance decomposition built upon intra-daily returns. The proposed asymmetric BEKK-CAW models feature better in-sample fit and out-of-sample forecasting performance than the benchmark symmetric model. The empirical application additionally shows that the asymmetric models using the signs of the daily returns outperform the models using the signed intra-daily returns. All the empirical exercises were run on Matlab_R2024b, including the adoption of the MFE Toolbox of Kevin Sheppard.
+The code in this repository is used in the empirical analyses of the paper "Asymmetric Models for Realized Covariances". The latter introduces a new class of asymmetric models for RC based on the BEKK-type conditional autoregressive Wishart model (Golosnoy et al. (2012)) either by interacting the RC with the signs of the daily returns or by using the semi-covariance decomposition (Bollerslev et al. (2020)) built upon intra-daily returns. The proposed asymmetric BEKK-CAW models feature better in-sample fit and out-of-sample forecasting performance than the benchmark symmetric model. The empirical application additionally shows that the asymmetric models using the signs of the daily returns outperform the models using the signed intra-daily returns. All the empirical exercises were run on Matlab_R2024b, including the adoption of the MFE Toolbox of Kevin Sheppard.
 
 The main contents of the code distribution are the following:
 - Estimation_Tables.m: the script file leading to the main estimation results
 - Forecasting_Tables.m: the script file leading to the main forecasting results
 - Fun/: folders of the functions for generating the estimation and forecasting results
 - Data/: folders of data files used as an input for generating the estimation and forecasting results
-- Forecasts/: folder of data files used as an input for generating the forecasting results
+- Forecasts/: folder of data files used as an input for generating forecasting results
 
 ## Instructions
 The estimation and forecasting analyses can be run individually, in any order. Remember to specify the correct path to the local version of the repository.
