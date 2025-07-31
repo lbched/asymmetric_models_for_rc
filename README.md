@@ -1,4 +1,4 @@
-# **Matlab Code for "Asymmetric Models for Realized Covariances"**
+# **"Asymmetric Models for Realized Covariances"**
 Luc Bauwens, Emilija Dzuverovic, Christian Hafner
 
 ## Overview
