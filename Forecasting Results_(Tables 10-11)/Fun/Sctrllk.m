@@ -1,0 +1,12 @@
+function L = Sctrllk(x0,yt,ytpm,ytn,n,T)
+A1 = (x0(1));
+A2 = (x0(2));
+B = (x0(3));
+St = Sctrrec(A1,A2,B,yt,ytpm,ytn,n,T);
+L = zeros(T,1);
+for j = 1:T
+d = det(St(:,:,j));
+a = trace(St(:,:,j)\yt(:,:,j));
+L(j) = -0.5*log(d)-0.5*(a);
+end
+end
