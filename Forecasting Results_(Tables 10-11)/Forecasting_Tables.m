@@ -742,11 +742,6 @@ includedFN;
 % includedFN: 20(PLT tr)
 
 %% Table 11: GMVP loss unconstrained (columns 3-4)
-rc = readmatrix('RC.csv');
-c = zeros(n,n,T2);
-for t = 1:T2
-   c(:,:,t) = buildSymmetric(rc((t+T1),:),n)*25200;
-end
 % Scalar models
 % sym
 pt = repmat(Portfolio,T2,1);
@@ -760,7 +755,7 @@ prob.Objective = x'*buildSymmetric(vech(F1s(:,:,t),n),n)*x;
 prob.Constraints.sumToTau = sum(x) == 1;
 sol = solve(prob);
 w(t,:) = sol.x;
-sigma1s(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma1s(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % tr
 pt = repmat(Portfolio,T2,1);
@@ -774,7 +769,7 @@ prob.Objective = x'*buildSymmetric(vech(F2s(:,:,t),n),n)*x;
 prob.Constraints.sumToTau = sum(x) == 1;
 sol = solve(prob);
 w(t,:) = sol.x;
-sigma2s(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma2s(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % trPNM
 pt = repmat(Portfolio,T2,1);
@@ -788,7 +783,7 @@ prob.Objective = x'*buildSymmetric(vech(F3s(:,:,t),n),n)*x;
 prob.Constraints.sumToTau = sum(x) == 1;
 sol = solve(prob);
 w(t,:) = sol.x;
-sigma3s(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma3s(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % trPNtauM
 pt = repmat(Portfolio,T2,1);
@@ -802,7 +797,7 @@ prob.Objective = x'*buildSymmetric(vech(F4s(:,:,t),n),n)*x;
 prob.Constraints.sumToTau = sum(x) == 1;
 sol = solve(prob);
 w(t,:) = sol.x;
-sigma4s(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma4s(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % semi
 pt = repmat(Portfolio,T2,1);
@@ -816,7 +811,7 @@ prob.Objective = x'*buildSymmetric(vech(F5s(:,:,t),n),n)*x;
 prob.Constraints.sumToTau = sum(x) == 1;
 sol = solve(prob);
 w(t,:) = sol.x;
-sigma5s(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma5s(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % semi-tau
 pt = repmat(Portfolio,T2,1);
@@ -830,7 +825,7 @@ prob.Objective = x'*buildSymmetric(vech(F6s(:,:,t),n),n)*x;
 prob.Constraints.sumToTau = sum(x) == 1;
 sol = solve(prob);
 w(t,:) = sol.x;
-sigma6s(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma6s(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % tr_oc
 pt = repmat(Portfolio,T2,1);
@@ -844,7 +839,7 @@ prob.Objective = x'*buildSymmetric(vech(F7s(:,:,t),n),n)*x;
 prob.Constraints.sumToTau = sum(x) == 1;
 sol = solve(prob);
 w(t,:) = sol.x;
-sigma7s(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma7s(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % trPNM_oc
 pt = repmat(Portfolio,T2,1);
@@ -858,7 +853,7 @@ prob.Objective = x'*buildSymmetric(vech(F8s(:,:,t),n),n)*x;
 prob.Constraints.sumToTau = sum(x) == 1;
 sol = solve(prob);
 w(t,:) = sol.x;
-sigma8s(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma8s(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % trPNtauM_oc
 pt = repmat(Portfolio,T2,1);
@@ -872,7 +867,7 @@ prob.Objective = x'*buildSymmetric(vech(F9s(:,:,t),n),n)*x;
 prob.Constraints.sumToTau = sum(x) == 1;
 sol = solve(prob);
 w(t,:) = sol.x;
-sigma9s(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma9s(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % Diagonal models
 % sym
@@ -887,7 +882,7 @@ prob.Objective = x'*buildSymmetric(vech(F1d(:,:,t),n),n)*x;
 prob.Constraints.sumToTau = sum(x) == 1;
 sol = solve(prob);
 w(t,:) = sol.x;
-sigma1d(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma1d(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % tr
 pt = repmat(Portfolio,T2,1);
@@ -901,7 +896,7 @@ prob.Objective = x'*buildSymmetric(vech(F2d(:,:,t),n),n)*x;
 prob.Constraints.sumToTau = sum(x) == 1;
 sol = solve(prob);
 w(t,:) = sol.x;
-sigma2d(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma2d(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % trPNM
 pt = repmat(Portfolio,T2,1);
@@ -915,7 +910,7 @@ prob.Objective = x'*buildSymmetric(vech(F3d(:,:,t),n),n)*x;
 prob.Constraints.sumToTau = sum(x) == 1;
 sol = solve(prob);
 w(t,:) = sol.x;
-sigma3d(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma3d(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % trPNtauM
 pt = repmat(Portfolio,T2,1);
@@ -929,7 +924,7 @@ prob.Objective = x'*buildSymmetric(vech(F4d(:,:,t),n),n)*x;
 prob.Constraints.sumToTau = sum(x) == 1;
 sol = solve(prob);
 w(t,:) = sol.x;
-sigma4d(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma4d(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % semi
 pt = repmat(Portfolio,T2,1);
@@ -943,7 +938,7 @@ prob.Objective = x'*buildSymmetric(vech(F5d(:,:,t),n),n)*x;
 prob.Constraints.sumToTau = sum(x) == 1;
 sol = solve(prob);
 w(t,:) = sol.x;
-sigma5d(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma5d(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % semi-tau
 pt = repmat(Portfolio,T2,1);
@@ -957,7 +952,7 @@ prob.Objective = x'*buildSymmetric(vech(F6d(:,:,t),n),n)*x;
 prob.Constraints.sumToTau = sum(x) == 1;
 sol = solve(prob);
 w(t,:) = sol.x;
-sigma6d(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma6d(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % tr_oc
 pt = repmat(Portfolio,T2,1);
@@ -971,7 +966,7 @@ prob.Objective = x'*buildSymmetric(vech(F7d(:,:,t),n),n)*x;
 prob.Constraints.sumToTau = sum(x) == 1;
 sol = solve(prob);
 w(t,:) = sol.x;
-sigma7d(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma7d(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % trPNM_oc
 pt = repmat(Portfolio,T2,1);
@@ -985,7 +980,7 @@ prob.Objective = x'*buildSymmetric(vech(F8d(:,:,t),n),n)*x;
 prob.Constraints.sumToTau = sum(x) == 1;
 sol = solve(prob);
 w(t,:) = sol.x;
-sigma8d(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma8d(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % trPNtauM_oc
 pt = repmat(Portfolio,T2,1);
@@ -999,7 +994,7 @@ prob.Objective = x'*buildSymmetric(vech(F9d(:,:,t),n),n)*x;
 prob.Constraints.sumToTau = sum(x) == 1;
 sol = solve(prob);
 w(t,:) = sol.x;
-sigma9d(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma9d(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % PLT models
 % sym
@@ -1014,7 +1009,7 @@ prob.Objective = x'*buildSymmetric(vech(F1p(:,:,t),n),n)*x;
 prob.Constraints.sumToTau = sum(x) == 1;
 sol = solve(prob);
 w(t,:) = sol.x;
-sigma1p(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma1p(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % tr
 pt = repmat(Portfolio,T2,1);
@@ -1028,7 +1023,7 @@ prob.Objective = x'*buildSymmetric(vech(F2p(:,:,t),n),n)*x;
 prob.Constraints.sumToTau = sum(x) == 1;
 sol = solve(prob);
 w(t,:) = sol.x;
-sigma2p(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma2p(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % trPNM
 pt = repmat(Portfolio,T2,1);
@@ -1042,7 +1037,7 @@ prob.Objective = x'*buildSymmetric(vech(F3p(:,:,t),n),6)*x;
 prob.Constraints.sumToTau = sum(x) == 1;
 sol = solve(prob);
 w(t,:) = sol.x;
-sigma3p(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma3p(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % trPNtauM
 pt = repmat(Portfolio,T2,1);
@@ -1056,7 +1051,7 @@ prob.Objective = x'*buildSymmetric(vech(F4p(:,:,t),n),n)*x;
 prob.Constraints.sumToTau = sum(x) == 1;
 sol = solve(prob);
 w(t,:) = sol.x;
-sigma4p(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma4p(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % semi
 pt = repmat(Portfolio,T2,1);
@@ -1070,35 +1065,35 @@ prob.Objective = x'*buildSymmetric(vech(F5p(:,:,t),n),n)*x;
 prob.Constraints.sumToTau = sum(x) == 1;
 sol = solve(prob);
 w(t,:) = sol.x;
-sigma5p(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma5p(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % semi-tau
-p = repmat(Portfolio,T2,1);
+pt = repmat(Portfolio,T2,1);
 w = zeros(T2,n);
 sigma6p = zeros(T2,1);
 for t = 1:T2
-p(t,:) = Portfolio('AssetCovar',buildSymmetric(vech(F6p(:,:,t),n),n),'AssetMean',zeros(1,n));
+pt(t,:) = Portfolio('AssetCovar',buildSymmetric(vech(F6p(:,:,t),n),n),'AssetMean',zeros(1,n));
 prob = optimproblem('ObjectiveSense','minimize');
 x = optimvar('x',n,1,'LowerBound',-1); 
 prob.Objective = x'*buildSymmetric(vech(F6p(:,:,t),n),n)*x;
 prob.Constraints.sumToTau = sum(x) == 1;
 sol = solve(prob);
 w(t,:) = sol.x;
-sigma6p(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma6p(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % tr_oc
-p = repmat(Portfolio,T2,1);
+pt = repmat(Portfolio,T2,1);
 w = zeros(T2,n);
 sigma7p = zeros(T2,1);
 for t = 1:T2
-p(t,:) = Portfolio('AssetCovar',buildSymmetric(vech(F7p(:,:,t),n),n),'AssetMean',zeros(1,n));
+pt(t,:) = Portfolio('AssetCovar',buildSymmetric(vech(F7p(:,:,t),n),n),'AssetMean',zeros(1,n));
 prob = optimproblem('ObjectiveSense','minimize');
 x = optimvar('x',n,1,'LowerBound',-1); 
 prob.Objective = x'*buildSymmetric(vech(F7p(:,:,t),n),n)*x;
 prob.Constraints.sumToTau = sum(x) == 1;
 sol = solve(prob);
 w(t,:) = sol.x;
-sigma7p(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma7p(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % trPNM_oc
 pt = repmat(Portfolio,T2,1);
@@ -1112,7 +1107,7 @@ prob.Objective = x'*buildSymmetric(vech(F8p(:,:,t),n),n)*x;
 prob.Constraints.sumToTau = sum(x) == 1;
 sol = solve(prob);
 w(t,:) = sol.x;
-sigma8p(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma8p(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % trPNtauM_oc
 pt = repmat(Portfolio,T2,1);
@@ -1126,7 +1121,7 @@ prob.Objective = x'*buildSymmetric(vech(F9p(:,:,t),n),n)*x;
 prob.Constraints.sumToTau = sum(x) == 1;
 sol = solve(prob);
 w(t,:) = sol.x;
-sigma9p(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma9p(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 %% Average GMVP scalar models (column 3)
 LF_GMVs = zeros(T2,m);      % matrix for the loss functions 
@@ -1199,7 +1194,7 @@ for t = 1:T2
 pt(t,:) = Portfolio('AssetCovar',buildSymmetric(vech(F1s(:,:,t),n),n),'AssetMean',zeros(1,n));
 pt(t,:) = setDefaultConstraints(pt(t,:));
 w(t,:) = estimateFrontierLimits(pt(t,:),'min');
-sigma1cs(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma1cs(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % tr
 pt = repmat(Portfolio,T2,1);
@@ -1209,7 +1204,7 @@ for t = 1:T2
 pt(t,:) = Portfolio('AssetCovar',buildSymmetric(vech(F2s(:,:,t),n),n),'AssetMean',zeros(1,n));
 pt(t,:) = setDefaultConstraints(pt(t,:));
 w(t,:) = estimateFrontierLimits(pt(t,:),'min');
-sigma2cs(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma2cs(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % trPNM
 pt = repmat(Portfolio,T2,1);
@@ -1219,7 +1214,7 @@ for t = 1:T2
 pt(t,:) = Portfolio('AssetCovar',buildSymmetric(vech(F3s(:,:,t),n),n),'AssetMean',zeros(1,n));
 pt(t,:) = setDefaultConstraints(pt(t,:));
 w(t,:) = estimateFrontierLimits(pt(t,:),'min');
-sigma3cs(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma3cs(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % trPNtauM
 pt = repmat(Portfolio,T2,1);
@@ -1229,7 +1224,7 @@ for t = 1:T2
 pt(t,:) = Portfolio('AssetCovar',buildSymmetric(vech(F4s(:,:,t),n),n),'AssetMean',zeros(1,n));
 pt(t,:) = setDefaultConstraints(pt(t,:));
 w(t,:) = estimateFrontierLimits(pt(t,:),'min');
-sigma4cs(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma4cs(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % semi
 pt = repmat(Portfolio,T2,1);
@@ -1239,7 +1234,7 @@ for t = 1:T2
 pt(t,:) = Portfolio('AssetCovar',buildSymmetric(vech(F5s(:,:,t),n),n),'AssetMean',zeros(1,n));
 pt(t,:) = setDefaultConstraints(pt(t,:));
 w(t,:) = estimateFrontierLimits(pt(t,:),'min');
-sigma5cs(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma5cs(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % semi-tau
 pt = repmat(Portfolio,T2,1);
@@ -1249,7 +1244,7 @@ for t = 1:T2
 pt(t,:) = Portfolio('AssetCovar',buildSymmetric(vech(F6s(:,:,t),n),n),'AssetMean',zeros(1,n));
 pt(t,:) = setDefaultConstraints(pt(t,:));
 w(t,:) = estimateFrontierLimits(pt(t,:),'min');
-sigma6cs(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma6cs(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % tr_oc
 pt = repmat(Portfolio,T2,1);
@@ -1259,7 +1254,7 @@ for t = 1:T2
 pt(t,:) = Portfolio('AssetCovar',buildSymmetric(vech(F7s(:,:,t),n),n),'AssetMean',zeros(1,n));
 pt(t,:) = setDefaultConstraints(pt(t,:));
 w(t,:) = estimateFrontierLimits(pt(t,:),'min');
-sigma7cs(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma7cs(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % trPNM_oc
 pt = repmat(Portfolio,T2,1);
@@ -1269,7 +1264,7 @@ for t = 1:T2
 pt(t,:) = Portfolio('AssetCovar',buildSymmetric(vech(F8s(:,:,t),n),n),'AssetMean',zeros(1,n));
 pt(t,:) = setDefaultConstraints(pt(t,:));
 w(t,:) = estimateFrontierLimits(pt(t,:),'min');
-sigma8cs(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma8cs(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % trPNtauM_oc
 pt = repmat(Portfolio,T2,1);
@@ -1279,7 +1274,7 @@ for t = 1:T2
 pt(t,:) = Portfolio('AssetCovar',buildSymmetric(vech(F9s(:,:,t),n),n),'AssetMean',zeros(1,n));
 pt(t,:) = setDefaultConstraints(pt(t,:));
 w(t,:) = estimateFrontierLimits(pt(t,:),'min');
-sigma9cs(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma9cs(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % Diagonal models
 % sym
@@ -1290,7 +1285,7 @@ for t = 1:T2
 pt(t,:) = Portfolio('AssetCovar',buildSymmetric(vech(F1d(:,:,t),n),n),'AssetMean',zeros(1,n));
 pt(t,:) = setDefaultConstraints(pt(t,:));
 w(t,:) = estimateFrontierLimits(pt(t,:),'min');
-sigma1cd(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma1cd(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % tr
 pt = repmat(Portfolio,T2,1);
@@ -1300,7 +1295,7 @@ for t = 1:T2
 pt(t,:) = Portfolio('AssetCovar',buildSymmetric(vech(F2d(:,:,t),n),n),'AssetMean',zeros(1,n));
 pt(t,:) = setDefaultConstraints(pt(t,:));
 w(t,:) = estimateFrontierLimits(pt(t,:),'min');
-sigma2cd(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma2cd(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % trPNM
 pt = repmat(Portfolio,T2,1);
@@ -1310,7 +1305,7 @@ for t = 1:T2
 pt(t,:) = Portfolio('AssetCovar',buildSymmetric(vech(F3d(:,:,t),n),n),'AssetMean',zeros(1,n));
 pt(t,:) = setDefaultConstraints(pt(t,:));
 w(t,:) = estimateFrontierLimits(pt(t,:),'min');
-sigma3cd(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma3cd(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % trPNtauM
 pt = repmat(Portfolio,T2,1);
@@ -1320,7 +1315,7 @@ for t = 1:T2
 pt(t,:) = Portfolio('AssetCovar',buildSymmetric(vech(F4d(:,:,t),n),n),'AssetMean',zeros(1,n));
 pt(t,:) = setDefaultConstraints(pt(t,:));
 w(t,:) = estimateFrontierLimits(pt(t,:),'min');
-sigma4cd(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma4cd(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % semi
 pt = repmat(Portfolio,T2,1);
@@ -1330,7 +1325,7 @@ for t = 1:T2
 pt(t,:) = Portfolio('AssetCovar',buildSymmetric(vech(F5d(:,:,t),n),n),'AssetMean',zeros(1,n));
 pt(t,:) = setDefaultConstraints(pt(t,:));
 w(t,:) = estimateFrontierLimits(pt(t,:),'min');
-sigma5cd(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma5cd(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % semi-tau
 pt = repmat(Portfolio,T2,1);
@@ -1340,7 +1335,7 @@ for t = 1:T2
 pt(t,:) = Portfolio('AssetCovar',buildSymmetric(vech(F6d(:,:,t),n),n),'AssetMean',zeros(1,n));
 pt(t,:) = setDefaultConstraints(pt(t,:));
 w(t,:) = estimateFrontierLimits(pt(t,:),'min');
-sigma6cd(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma6cd(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % tr_oc
 pt = repmat(Portfolio,T2,1);
@@ -1350,7 +1345,7 @@ for t = 1:T2
 pt(t,:) = Portfolio('AssetCovar',buildSymmetric(vech(F7d(:,:,t),n),n),'AssetMean',zeros(1,n));
 pt(t,:) = setDefaultConstraints(pt(t,:));
 w(t,:) = estimateFrontierLimits(pt(t,:),'min');
-sigma7cd(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma7cd(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % trPNM_oc
 pt = repmat(Portfolio,T2,1);
@@ -1360,7 +1355,7 @@ for t = 1:T2
 pt(t,:) = Portfolio('AssetCovar',buildSymmetric(vech(F8d(:,:,t),n),n),'AssetMean',zeros(1,n));
 pt(t,:) = setDefaultConstraints(pt(t,:));
 w(t,:) = estimateFrontierLimits(pt(t,:),'min');
-sigma8cd(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma8cd(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % trPNtauM_oc
 pt = repmat(Portfolio,T2,1);
@@ -1370,18 +1365,18 @@ for t = 1:T2
 pt(t,:) = Portfolio('AssetCovar',buildSymmetric(vech(F9d(:,:,t),n),n),'AssetMean',zeros(1,n));
 pt(t,:) = setDefaultConstraints(pt(t,:));
 w(t,:) = estimateFrontierLimits(pt(t,:),'min');
-sigma9cd(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma9cd(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % PLT models
 % sym
-ptt = repmat(Portfolio,T2,1);
+pt = repmat(Portfolio,T2,1);
 w = zeros(T2,n);
 sigma1cp = zeros(T2,1);
 for t = 1:T2
 pt(t,:) = Portfolio('AssetCovar',buildSymmetric(vech(F1p(:,:,t),n),n),'AssetMean',zeros(1,n));
 pt(t,:) = setDefaultConstraints(pt(t,:));
 w(t,:) = estimateFrontierLimits(pt(t,:),'min');
-sigma1cp(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma1cp(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % tr
 pt = repmat(Portfolio,T2,1);
@@ -1391,7 +1386,7 @@ for t = 1:T2
 pt(t,:) = Portfolio('AssetCovar',buildSymmetric(vech(F2p(:,:,t),n),n),'AssetMean',zeros(1,n));
 pt(t,:) = setDefaultConstraints(pt(t,:));
 w(t,:) = estimateFrontierLimits(pt(t,:),'min');
-sigma2cp(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma2cp(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % trPNM
 pt = repmat(Portfolio,T2,1);
@@ -1401,7 +1396,7 @@ for t = 1:T2
 pt(t,:) = Portfolio('AssetCovar',buildSymmetric(vech(F3p(:,:,t),n),n),'AssetMean',zeros(1,n));
 pt(t,:) = setDefaultConstraints(pt(t,:));
 w(t,:) = estimateFrontierLimits(pt(t,:),'min');
-sigma3cp(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma3cp(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % trPNtauM
 pt = repmat(Portfolio,T2,1);
@@ -1411,17 +1406,17 @@ for t = 1:T2
 pt(t,:) = Portfolio('AssetCovar',buildSymmetric(vech(F4p(:,:,t),n),n),'AssetMean',zeros(1,n));
 pt(t,:) = setDefaultConstraints(pt(t,:));
 w(t,:) = estimateFrontierLimits(pt(t,:),'min');
-sigma4cp(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma4cp(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % semi
-p = repmat(Portfolio,T2,1);
+pt = repmat(Portfolio,T2,1);
 w = zeros(T2,n);
 sigma5cp = zeros(T2,1);
 for t = 1:T2
 pt(t,:) = Portfolio('AssetCovar',buildSymmetric(vech(F5p(:,:,t),n),n),'AssetMean',zeros(1,n));
 pt(t,:) = setDefaultConstraints(pt(t,:));
 w(t,:) = estimateFrontierLimits(pt(t,:),'min');
-sigma5cp(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma5cp(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % semi-tau
 pt = repmat(Portfolio,T2,1);
@@ -1431,7 +1426,7 @@ for t = 1:T2
 pt(t,:) = Portfolio('AssetCovar',buildSymmetric(vech(F6p(:,:,t),n),n),'AssetMean',zeros(1,n));
 pt(t,:) = setDefaultConstraints(pt(t,:));
 w(t,:) = estimateFrontierLimits(pt(t,:),'min');
-sigma6cp(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma6cp(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % tr_oc
 pt = repmat(Portfolio,T2,1);
@@ -1441,7 +1436,7 @@ for t = 1:T2
 pt(t,:) = Portfolio('AssetCovar',buildSymmetric(vech(F7p(:,:,t),n),n),'AssetMean',zeros(1,n));
 pt(t,:) = setDefaultConstraints(pt(t,:));
 w(t,:) = estimateFrontierLimits(pt(t,:),'min');
-sigma7cp(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma7cp(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % trPNM_oc
 pt = repmat(Portfolio,T2,1);
@@ -1451,7 +1446,7 @@ for t = 1:T2
 pt(t,:) = Portfolio('AssetCovar',buildSymmetric(vech(F8p(:,:,t),n),n),'AssetMean',zeros(1,n));
 pt(t,:) = setDefaultConstraints(pt(t,:));
 w(t,:) = estimateFrontierLimits(pt(t,:),'min');
-sigma8cp(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma8cp(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 % trPNtauM_oc
 pt = repmat(Portfolio,T2,1);
@@ -1461,7 +1456,7 @@ for t = 1:T2
 pt(t,:) = Portfolio('AssetCovar',buildSymmetric(vech(F9p(:,:,t),n),n),'AssetMean',zeros(1,n));
 pt(t,:) = setDefaultConstraints(pt(t,:));
 w(t,:) = estimateFrontierLimits(pt(t,:),'min');
-sigma9cp(t)=sqrt(w(t,:)*c(:,:,t)*w(t,:)');
+sigma9cp(t)=sqrt(w(t,:)*p(:,:,t)*w(t,:)');
 end
 %% Average constrained GMVP scalar models (column 5)
 LFGVs = zeros(T2,m);      % matrix for the loss functions 
