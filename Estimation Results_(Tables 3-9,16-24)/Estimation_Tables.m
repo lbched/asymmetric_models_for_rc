@@ -1,7 +1,7 @@
 %% In-Sample Estimation Results & Hypothesis Testing (Tables:3-9;16-24)
 clear
 clc
-warning('off','all');
+warning('off','all'); % to avoid all the warnings that don't affect execution
 
 %% The file paths are relative to the folder Data/
 % Loading Data
